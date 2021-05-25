@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './style.css';
+import './Navbar.css';
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -10,10 +11,10 @@ function Navbar() {
             <div className="logo">Bescherelle</div>
             <ul className="nav-links" style={{transform: open ? "translateX(0px)" : "" }}>
               <li>
-                <a><i class="far fa-envelope-open fa-lg"></i>&nbsp;Newsletter</a>
+                <a><i className="far fa-envelope-open fa-lg"></i>&nbsp;Newsletter</a>
                 </li>
               <li>
-                <a><i class="fas fa-search fa-lg"></i>&nbsp;Rechercher</a>
+                <a><i className="fas fa-search fa-lg"></i>&nbsp;Rechercher</a>
                 </li>
             </ul>
             <i onClick={() => setOpen(!open)} className="fas fa-bars burger"></i>

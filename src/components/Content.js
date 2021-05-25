@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Content.css';
 
 function Content() {
 
@@ -30,19 +31,20 @@ function Content() {
 
   
     return(
-      <section className="card-row">
+      <div className="container">
+        <h2>Conjugueur</h2>
+        <hr></hr>
           {data.map((value, index) => {
             return(
               <div key={value.path} className="card-contain item">
                 
                 <div className="card-body">
                       <h4 className="card-title">{value.title}</h4>
-                      <h3 className="card-text">{value.nid}</h3>
                 </div>
               </div>
             ) 
           })}
-      </section>
+      </div>
     )
 }
 
