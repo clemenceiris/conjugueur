@@ -1,4 +1,5 @@
 .container{
+    min-height: 1100px;
     width: 950px;
     display: block;
     margin: auto;

@@ -1,60 +1,50 @@
-import React from 'react';
-import Downshift from 'downshift';
-import {all as starWarsNames} from 'starwars-names'
-import {matchSorter} from 'match-sorter'
-import { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-
-const items = starWarsNames.map(name => ({
-    value: name,
-    id: name.toLowerCase(),
-}))
-
-const getItems = value => value ? matchSorter(items, value, {keys: ['value']}) : items
-
-const itemToString = item => item ? item.value : ''
-
-class Form extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Autocomplete Rocks</h1>
-                <div>
-                    <Downshift itemToString={itemToString}>
-                        {({
-                            getLabelProps, 
-                            getInputProps, 
-                            getMenuProps, 
-                            getItemProps,
-                            getToggleButtonProps,
-                            highlightedIndex,
-                            selectedItem,
-                            clearItem,
-                            isOpen, 
-                            inputValue,
-                        }) => (
-                            <div>
-                                <label {...getLabelProps()} >Star Wars Character</label>
-                                <input {...getInputProps()} />
-                                <button {...getToggleButtonProps()}>
-                                    {isOpen ? 'close' : 'open'}
-                                </button>
-                                {selectedItem ? <button onClick={clearItem}>X</button> : null }
-                                <ul {...getMenuProps()}>
-                                    {isOpen 
-                                    ? getItems(inputValue).map((item, index) => (
-                                        <li key={item.id} {...getItemProps({item, key:item.id, style: {
-                                            backgroundColor: index === highlightedIndex ? 'lightgray' : null,
-                                        }})}>{item.value}</li>
-                                    )) : null}
-                                </ul>
-                            </div>
-                        )}
-                    </Downshift>
-                </div>
-            </div>
-        )
-    }
-}
-
-export default Form
+function Form() {
+    const [loading, setLoading] = useState(false);
+    const [posts, setPosts] = useState([]);
+    const [searchTitle, setSearchTitle] = useState("");
+  
+    useEffect(() => {
+      const loadPosts = async () => {
+        setLoading(true);
+        const response = await axios.get(
+          "https://conjugueur.drupal.pm/json/verbes.json"
+        );
+        setPosts(response.data);
+        setLoading(false);
+      };
+  
+      loadPosts();
+    }, []);
+  
+    return (
+      <div className="App">
+        <h3>Search Filter</h3>
+        <input
+          style={{ width: "30%", height: "25px" }}
+          type="text"
+          placeholder="Search..."
+          onChange={(e) => setSearchTitle(e.target.value)}
+        />
+        {loading ? (
+          <h4>Loading ...</h4>
+        ) : (
+          posts
+            .filter((value) => {
+              if (searchTitle === "") {
+                return value;
+              } else if (
+                value.title.toLowerCase().includes(searchTitle.toLowerCase())
+              ) {
+                return value;
+              }
+            })
+            .map((item) => <h5 key={item.id}>{item.title}</h5>)
+        )}
+      </div>
+    );
+  }
+  
+  export default Form;
