@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './Form.css';
 import axios from "axios";
 
 function Form() {
@@ -20,21 +21,22 @@ function Form() {
     }, []);
   
     return (
-      <div className="App">
-        <h3>Search Filter</h3>
-        <input
-          style={{ width: "30%", height: "25px" }}
+      <div className="search-bar-container">
+        <h3>Recherche</h3>
+        <i class="fas fa-search search-bar-icon"></i>
+        <input className="search-bar"
           type="text"
-          placeholder="Search..."
+          placeholder="Taper un verbe..."
           onChange={(e) => setSearchTitle(e.target.value)}
         />
         {loading ? (
-          <h4>Loading ...</h4>
+          <h4>Chargement ...</h4>
         ) : (
           posts
             .filter((value) => {
               if (searchTitle === "") {
-                return value;
+               //return value;
+                return null;
               } else if (
                 value.title.toLowerCase().includes(searchTitle.toLowerCase())
               ) {
