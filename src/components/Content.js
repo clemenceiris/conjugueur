@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Content.css';
-import Autocomplete from './AutoComplete';
+import Form from './Form';
 
 function Content() {
 
@@ -35,14 +35,7 @@ function Content() {
       <div className="container">
         <h2>CONJUGUEUR</h2>
         <br></br>
-
-        <div className="d-flex justify-content-center">
-          <div className="search-bar-container">
-            <Autocomplete />
-            <i className="search-bar-icon fas fa-search fa-lg"></i>
-          </div>
-        </div>
-
+        <Form />
           {data.map((value, index) => {
             return(
               <div key={value.path} className="card-contain item">
