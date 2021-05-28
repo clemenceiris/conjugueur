@@ -29,6 +29,7 @@ function Form() {
           placeholder="Taper un verbe..."
           onChange={(e) => setSearchTitle(e.target.value)}
         />
+        <div className="list-result">
         {loading ? (
           <h4>Chargement ...</h4>
         ) : (
@@ -43,8 +44,13 @@ function Form() {
                 return value;
               }
             })
-            .map((item) => <h5 key={item.id}>{item.title}</h5>)
+            .map((item) => 
+            <ul className="list-group">
+            <li className="list-item" key={item.id}>{item.title}</li>
+            </ul>
+            )
         )}
+        </div>
       </div>
     );
   }

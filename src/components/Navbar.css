@@ -9,10 +9,11 @@ li{
   nav{
     display: flex;
     justify-content: space-around;
-    min-height: 10vh;
+    min-height: 12vh;
     align-items: center;
     background-color: #e5313c;
     color: #fff;
+    z-index: 1;
   }
   
   nav .logo{

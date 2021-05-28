@@ -28,17 +28,20 @@
     font-size: 22px;
     color: #ac0a0ad1;
   }
-  
-  .line-height-1{
-    line-height: 1;
+
+  .list-result{
+    background-color: #e1e3e5;
+    max-height: 400px;
+    overflow: auto;
   }
-  
-  .list-group-item{
+ 
+  .list-item{
     cursor: pointer;
   }
   
-  .list-group-item.active,
-  .list-group-item:hover {
-    background-color: #e1e3e5;
+  .list-item.active,
+  .list-item:hover {
+    background-color: lightgrey;
     border-color: #d3d5d7;
   }
+
