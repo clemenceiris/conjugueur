@@ -38,7 +38,7 @@ function Form() {
                //return value;
                 return null;
               } else if (
-                value.title.toLowerCase().includes(searchTitle.toLowerCase())
+                value.title.toLowerCase().startsWith(searchTitle.toLowerCase())
               ) {
                 return value;
               }
