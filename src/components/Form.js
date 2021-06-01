@@ -31,16 +31,18 @@ function Form() {
         />
         <div className="list-result">
         {loading ? (
-          <h4>Chargement ...</h4>
+          <p>Chargement ...</p>
         ) : (
           posts
           .filter((value) => {
+            console.log("value1", value);
             if (searchTitle === "") {
              //return value;
               return null;
             } else if (
-              value.title.toLowerCase().startsWith(searchTitle.toLowerCase())
+              value.title.replace(/[’]/g, "'").toLowerCase().startsWith(searchTitle.toLowerCase())
             ) {
+              console.log("value2", value)
               return value;
             }
           })
