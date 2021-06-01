@@ -7,7 +7,6 @@ function Content() {
     return(
       <div className="container">
         <h2>CONJUGUEUR</h2>
-        <br></br>
         <Form />
       </div>
     )

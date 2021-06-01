@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './Form.css';
 import axios from "axios";
+import Badge from 'react-bootstrap/Badge';
 
 function Form() {
     const [loading, setLoading] = useState(false);
@@ -22,11 +23,10 @@ function Form() {
   
     return (
       <div className="search-bar-container">
-        <h3>Recherche</h3>
-        <i class="fas fa-search search-bar-icon"></i>
+        <i className="fas fa-search search-bar-icon"></i>
         <input className="search-bar"
           type="text"
-          placeholder="Taper un verbe..."
+          placeholder="Rechercher un verbe..."
           onChange={(e) => setSearchTitle(e.target.value)}
         />
         <div className="list-result">
@@ -34,19 +34,22 @@ function Form() {
           <h4>Chargement ...</h4>
         ) : (
           posts
-            .filter((value) => {
-              if (searchTitle === "") {
-               //return value;
-                return null;
-              } else if (
-                value.title.toLowerCase().startsWith(searchTitle.toLowerCase())
-              ) {
-                return value;
-              }
-            })
+          .filter((value) => {
+            if (searchTitle === "") {
+             //return value;
+              return null;
+            } else if (
+              value.title.toLowerCase().startsWith(searchTitle.toLowerCase())
+            ) {
+              return value;
+            }
+          })
             .map((item) => 
             <ul className="list-group">
-            <li className="list-item" key={item.id}>{item.title}</li>
+              <li className="list-item" key={item.id}>
+                <p>{item.title}</p>
+                <Badge variant="primary">Badge</Badge>{' '}
+              </li>
             </ul>
             )
         )}
