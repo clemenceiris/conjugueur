@@ -40,7 +40,7 @@ function Form() {
              //return value;
               return null;
             } else if (
-              value.title.toLowerCase().startsWith(searchTitle.replace(/[']/g, "'").toLowerCase())
+              value.title.toLowerCase().startsWith(searchTitle.replace(/[']/, "'").replace(/oe/g, "œ").toLowerCase())
             ) {
               console.log("value2", value)
               return value;
