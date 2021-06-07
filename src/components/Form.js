@@ -20,6 +20,14 @@ function Form() {
   
       loadPosts();
     }, []);
+
+    const fetchConjugason = async (id) => {
+      const response = await axios.get(
+        `https://conjugueur.drupal.pm/json/${id}/verbe.json`
+      );
+
+      console.log(response.data)
+    }
   
     return (
       <div className="search-bar-container">
@@ -35,20 +43,18 @@ function Form() {
         ) : (
           posts
           .filter((value) => {
-            console.log("value1", value);
             if (searchTitle === "") {
              //return value;
               return null;
             } else if (
               value.title.toLowerCase().startsWith(searchTitle.replace(/[']/, "'").replace(/oe/g, "œ").toLowerCase())
             ) {
-              console.log("value2", value)
               return value;
             }
           })
             .map((item) => 
             <ul className="list-group">
-              <li className="list-item" key={item.id}>
+              <li onClick={()=> fetchConjugason(item.nid)} className="list-item" key={item.id}>
                 <p>{item.title}</p>
                 <Badge variant="primary">Badge</Badge>{' '}
               </li>
