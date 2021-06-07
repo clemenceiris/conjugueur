@@ -25,7 +25,6 @@ function Form() {
       const response = await axios.get(
         `https://conjugueur.drupal.pm/json/${id}/verbe.json`
       );
-
       console.log(response.data)
     }
   
@@ -47,7 +46,7 @@ function Form() {
              //return value;
               return null;
             } else if (
-              value.title.toLowerCase().startsWith(searchTitle.replace(/[']/, "'").replace(/oe/g, "œ").toLowerCase())
+              value.title.toLowerCase().startsWith(searchTitle.replace(/[']/g, "’").replace(/oe/g, "œ").toLowerCase())
             ) {
               return value;
             }
