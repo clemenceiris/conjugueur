@@ -5,7 +5,7 @@ import Form from './Form';
 function Content() {
 
     return(
-      <div className="container">
+      <div className="container content-contain">
         <h2>CONJUGUEUR</h2>
         <Form />
       </div>

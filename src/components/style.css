@@ -1,14 +1,5 @@
-.header{
-    height: 80px;
-    background-color: #e5313c;
-    color: white;
-    font-size: 50px;
-    text-align: left;
-    padding: 20px;
-}
-
 .footer{
     background-color: #6e6e78;
-    height: 50px;
+    height: 100px;
     color: white;
 }

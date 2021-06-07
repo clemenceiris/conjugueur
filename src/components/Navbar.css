@@ -5,13 +5,16 @@ li{
   a{
     text-decoration: none;
   }
-  
+
   nav{
-    display: flex;
-    justify-content: space-around;
+    background-color: #e5313c;
+  }
+  
+  .navbar-contain{
+    display: flex !important;
+    justify-content: space-between;
     min-height: 12vh;
     align-items: center;
-    background-color: #e5313c;
     color: #fff;
   }
   
